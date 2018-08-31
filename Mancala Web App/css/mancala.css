@@ -1,0 +1,26 @@
+
+
+html {
+    font-size: 20px;
+}
+
+
+body {
+  text-align: center;
+}
+.board {
+  margin:30px auto;
+  display: flex;
+  flex-flow row;
+  border: 1px solid #bbb;
+  box-shadow: : 0 0 5px #bbb;
+  height: 240px;
+  width: 930px;
+  max-width: 100%;
+  resize: both;
+  overflow-x: auto;
+}
+
+.rows {
+  flex: auto;
+}

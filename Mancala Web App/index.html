@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <title>Mancala</title>
+    <link rel="stylesheet" type="text/css" href="css/mancala.css">
+</head>
+<body>
+    <h1>Mancala</h1>
+
+    <div id="p2" class="player current-player"> Player 2 </div>
+
+
+    <div class="board">
+      <div id="bucket2" class="bucket"> </div>
+      <div id="bucket1" class="bucket"> </div>
+      <div class="rows">
+            <div id="cup5" class="cup stopper player2"></div>
+            <div id="cup4" class="cup stopper player2"></div>
+            <div id="cup3" class="cup stopper player2"></div>
+            <div id="cup2" class="cup stopper player2"></div>
+            <div id="cup1" class="cup stopper player2"></div>
+            <div id="cup0" class="cup stopper player2"></div>
+          </div>
+
+      <div class="rows">
+            <div id="cup6" class="cup player1"></div>
+            <div id="cup7" class="cup player1"></div>
+            <div id="cup8" class="cup player1"></div>
+            <div id="cup9" class="cup player1"></div>
+            <div id="cup10" class="cup player1"></div>
+            <div id="cup11" class="cup player1"></div>
+      </div>
+    </div>
+    <div id="p1" class="player current-player"> Player 1 </div>
+    <p class="turn"> It's player <span class="current-player">one</span>'s turn'</p>
+    <button class="new-game"> New Game </button>
+      <script> src="js/mancala.js>"</script>
+  </body>
+  </html>
