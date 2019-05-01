@@ -53,6 +53,8 @@ var start = function() {
   $('#winner').remove();
 }
 
+clickOn();
+
 var moveCount = 0;
 var pebblesPickedUp = 0;
 
@@ -62,15 +64,16 @@ var move = function (index) {
   board[index].value = 0;
 
 
-  for(var = i = moveCount; i>-0; i--){
+  for(var i = moveCount; i>=0; i--){
     //player 1 turn
     if(currentPlayer === "Player 1" && pebblesPickedUp === 1 && index === 11){
       bucket1.value++;
-      pebblesPickedUp --;
+      pebblesPickedUp = -1;
     }
     else if( currentPlayer === "Player 1" && pebblesPickedUp > 1 && index ===11){
       bucket1.value++;
       board[index].value++;
+      index =0;
       pebblesPickedUp-= 2;
     }
     else if(currentPlayer === "Player 1" && pebblesPickedUp > 0){
@@ -111,8 +114,9 @@ var move = function (index) {
   }
 
   endGame();
-  winner();
+  gameWinner();
   switchPlayer(index);
+  scoreBoard();
 }
 
 function switchPlayer(index) {
@@ -158,26 +162,26 @@ var update = function(index){
     $(".left").text("+" + (board[index].value)+ board[11-index.value]);
   }
   board[11-index].value = 0;
-  board[index],value = 0;
+  board[index].value = 0;
 }
 
 function UpdateCSS(){
   if(currentPlayer === "Player 1"){
-    $(".p1").removeclass("stopper");
-    $(".p2").addClass("stopper");
-    $("#p1").addClass("currentPlayer");
-    $("#p2").removeclass("currentPlayer");
+    $(".player1").removeClass("stopper");
+    $(".player2").addClass("stopper");
+    $("#playerUno").addClass("currentPlayer");
+    $("#playerDos").removeClass("currentPlayer");
   }
   else{
-    $(".p2").removeclass("stopper");
-    $(".p1").addClass("stopper");
-    $("#p2").addClass("currentPlayer");
-    $("#p1").removeclass("currentPlayer");
+    $(".player2").removeClass("stopper");
+    $(".player1").addClass("stopper");
+    $("#playerDos").addClass("currentPlayer");
+    $("#playerUno").removeClass("currentPlayer");
   }
 }
 
 
-function winner(){
+function gameWinner(){
   if(win === true){
     if(bucket1.value > bucket2.value){
       winner = "Player 1";
@@ -186,8 +190,8 @@ function winner(){
       winner = "Player 2";
     }
     else {
-      winner = "Tie Game!"
-    } $('body').append($('<div id="winner"').text(winnter+ " is the Winner!");
+      winner = "Tie Game!";
+    } $('body').append($('<div id="winner"').text(winner+ " is the Winner!"));
   }
 }
 
@@ -212,4 +216,27 @@ function endGame(){
         }
       }
     }
+
+    function invalid (index) {
+  if ((currentPlayer === "Player 1" && index >= 6) && board[index].value != 0) {
+    move(index);
+  } else if ((currentPlayer === "Player 2" && index <= 5) && board[index].value != 0) {
+    move(index);
+  } else if ((currentPlayer === "Player 1" && (index < 6))
+    || (currentPlayer === "Player 2" && (index > 5))
+    || board[index].value === 0) {
+    window.alert("Invalid Move");
+  };
+}
+
+//event listener
+function clickOn(){
+  $('.cup').on('click', function(event){
+    event.preventDefault();
+    var index = parseInt(event.target.id.slice(3));
+    invalid(index);
+  });
+}
+
     start();
+    $("#new-game").on("click", start);

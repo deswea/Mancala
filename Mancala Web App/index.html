@@ -1,19 +1,24 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
     <title>Mancala</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <link rel="stylesheet" type="text/css" href="css/mancala.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 </head>
 <body>
     <h1>Mancala</h1>
 
-    <div id="p2" class="player current-player"> Player 2 </div>
+    <div id="playerDos" class="player currentPlayer"> Player 2 </div>
 
 
-    <div class="board">
+<div>
+
+    <div id= "board" class="board">
       <div id="bucket2" class="bucket"> </div>
       <div id="bucket1" class="bucket"> </div>
-      <div class="rows">
+      <div id="rows">
             <div id="cup5" class="cup stopper player2"></div>
             <div id="cup4" class="cup stopper player2"></div>
             <div id="cup3" class="cup stopper player2"></div>
@@ -22,7 +27,7 @@
             <div id="cup0" class="cup stopper player2"></div>
           </div>
 
-      <div class="rows">
+      <div id="rows">
             <div id="cup6" class="cup player1"></div>
             <div id="cup7" class="cup player1"></div>
             <div id="cup8" class="cup player1"></div>
@@ -31,9 +36,12 @@
             <div id="cup11" class="cup player1"></div>
       </div>
     </div>
-    <div id="p1" class="player current-player"> Player 1 </div>
-    <p class="turn"> It's player <span class="current-player">one</span>'s turn'</p>
-    <button class="new-game"> New Game </button>
-      <script> src="js/mancala.js>"</script>
+  </div>
+    <div id="playerUno" class="player currentPlayer"> Player 1 </div>
+    <div id="new-gameDiv">
+    <span id="new-game"> New Game </span>
+  </div>
+
+      <script src="js/mancala.js"></script>
   </body>
   </html>
